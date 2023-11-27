@@ -9,7 +9,7 @@ function App() {
   return (
     <Grid container >
       <Sidebar />
-      <Home />
+      {/* <Home /> */}
       {/* <SingUp/> */}
     </Grid>
   );
