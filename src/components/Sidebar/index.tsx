@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Badge,
   Box,
   List,
   ListItem,
@@ -9,6 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 
+import { SearchDrawer } from "../SearchDrawer";
+import { CreatePost } from "../CreatePost";
+
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CenterFocusStrongOutlinedIcon from "@mui/icons-material/CenterFocusStrongOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -16,8 +20,6 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { SearchDrawer } from "../SearchDrawer";
-import { CreatePost } from "../CreatePost";
 
 export const Sidebar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -48,11 +50,13 @@ export const Sidebar = () => {
       sx={{
         width: 240,
         height: "100vh",
-        borderRight: "1px solid purple",
+        borderRight: "2px solid #673AB7",
         backgroundColor: "black",
+        padding: "0 5px 0 5px",
       }}
     >
       <Typography
+        color="primary"
         sx={{
           marginLeft: 2,
           padding: 3,
@@ -61,7 +65,6 @@ export const Sidebar = () => {
           fontSize: 40,
           cursor: "pointer",
           overflow: "hidden",
-          color: "purple",
         }}
       >
         Postpulse
@@ -71,7 +74,7 @@ export const Sidebar = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <HomeOutlinedIcon sx={{ color: "purple" }} fontSize="large" />
+              <HomeOutlinedIcon color="primary" fontSize="large" />
             </ListItemIcon>
             <ListItemText primary={"Home"} sx={{ color: "white" }} />
           </ListItemButton>
@@ -79,7 +82,7 @@ export const Sidebar = () => {
         <ListItem disablePadding>
           <ListItemButton onClick={toggleDrawer(true)}>
             <ListItemIcon>
-              <SearchOutlinedIcon sx={{ color: "purple" }} fontSize="large" />
+              <SearchOutlinedIcon color="primary" fontSize="large" />
             </ListItemIcon>
             <ListItemText primary={"Search"} sx={{ color: "white" }} />
           </ListItemButton>
@@ -87,10 +90,7 @@ export const Sidebar = () => {
         <ListItem disablePadding>
           <ListItemButton onClick={handleClickOpen}>
             <ListItemIcon>
-              <CenterFocusStrongOutlinedIcon
-                sx={{ color: "purple" }}
-                fontSize="large"
-              />
+              <CenterFocusStrongOutlinedIcon color="primary" fontSize="large" />
             </ListItemIcon>
             <ListItemText primary={"New post"} sx={{ color: "white" }} />
           </ListItemButton>
@@ -98,10 +98,12 @@ export const Sidebar = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <NotificationsActiveOutlinedIcon
-                sx={{ color: "purple" }}
-                fontSize="large"
-              />
+              <Badge badgeContent={100} color="secondary">
+                <NotificationsActiveOutlinedIcon
+                  color="primary"
+                  fontSize="large"
+                />
+              </Badge>
             </ListItemIcon>
             <ListItemText primary={"Notifications"} sx={{ color: "white" }} />
           </ListItemButton>
@@ -109,7 +111,7 @@ export const Sidebar = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <AccountCircleIcon sx={{ color: "purple" }} fontSize="large" />
+              <AccountCircleIcon color="primary" fontSize="large" />
             </ListItemIcon>
             <ListItemText primary={"Profile"} sx={{ color: "white" }} />
           </ListItemButton>
@@ -122,12 +124,9 @@ export const Sidebar = () => {
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? (
-                  <SettingsOutlinedIcon
-                    sx={{ color: "purple" }}
-                    fontSize="large"
-                  />
+                  <SettingsOutlinedIcon color="primary" fontSize="large" />
                 ) : (
-                  <MenuOutlinedIcon sx={{ color: "purple" }} fontSize="large" />
+                  <MenuOutlinedIcon color="primary" fontSize="large" />
                 )}
               </ListItemIcon>
               <ListItemText primary={text} sx={{ color: "white" }} />

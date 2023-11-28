@@ -40,7 +40,7 @@ export const SingUp = () => {
         <Grid
           sx={{
             border: 1,
-            borderColor: "purple",
+            borderColor: "#673AB7",
             borderRadius: 1,
             padding: 4,
             width: 350,
@@ -53,7 +53,7 @@ export const SingUp = () => {
               fontFamily: "Hopsters",
               fontWeight: 700,
               fontSize: 50,
-              color: "purple",
+              color: "#673AB7",
             }}
           >
             Postpulse
@@ -105,9 +105,9 @@ export const SingUp = () => {
                     edge="end"
                   >
                     {showPassword ? (
-                      <VisibilityOff sx={{ color: "purple" }} />
+                      <VisibilityOff sx={{ color: "#673AB7" }} />
                     ) : (
-                      <Visibility sx={{ color: "purple" }} />
+                      <Visibility sx={{ color: "#673AB7" }} />
                     )}
                   </IconButton>
                 </InputAdornment>
@@ -142,14 +142,14 @@ export const SingUp = () => {
             <Grid item xs={5}>
               <Divider />
             </Grid>
-            <Typography sx={{ color: "purple" }}>Ou</Typography>
+            <Typography sx={{ color: "#673AB7" }}>Ou</Typography>
             <Grid item xs={5}>
               <Divider />
             </Grid>
           </Grid>
           <Grid container alignItems={"center"} justifyContent={"center"}>
-            <GoogleIcon sx={{ color: "purple", marginRight: 2 }} />
-            <Typography sx={{ color: "purple" }}>
+            <GoogleIcon sx={{ color: "#673AB7", marginRight: 2 }} />
+            <Typography sx={{ color: "#673AB7" }}>
               Cadastrar com o google
             </Typography>
           </Grid>
@@ -160,7 +160,7 @@ export const SingUp = () => {
           alignItems={"center"}
           sx={{
             border: 1,
-            borderColor: "purple",
+            borderColor: "#673AB7",
             borderRadius: 1,
             height: 50,
             marginBottom: 4,
@@ -169,7 +169,7 @@ export const SingUp = () => {
           <Typography sx={{ color: "black" }}>
             Já é cadastrado? &nbsp;
           </Typography>
-          <Typography sx={{ color: "purple" }}>Entrar</Typography>
+          <Typography sx={{ color: "#673AB7" }}>Entrar</Typography>
         </Grid>
       </Grid>
     </Grid>

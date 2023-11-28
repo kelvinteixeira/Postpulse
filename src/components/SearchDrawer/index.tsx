@@ -58,7 +58,7 @@ export const SearchDrawer = (props: SearchDrawerProps) => {
           </IconButton>
         </Paper>
         <Typography
-          sx={{ borderTop: 1, borderColor: "purple", paddingTop: 2 }}
+          sx={{ borderTop: 1, borderColor: "#673AB7", paddingTop: 2 }}
           marginTop={4}
           color="white"
         >

@@ -40,7 +40,7 @@ export const CreatePost = (props: CreatePostProps) => {
       <DialogTitle sx={{ background: "#b5b2b2" }} align="center">
         {"Create new post"}
       </DialogTitle>
-      <Divider sx={{ backgroundColor: "black" }} />
+      <Divider  sx={{ backgroundColor: "#673AB7" }} />
       <Box
         sx={{
           width: 500,
