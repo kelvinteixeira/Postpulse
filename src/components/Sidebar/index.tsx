@@ -16,14 +16,15 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { SearchDrawer } from "../SearchDrawer";
 
 const drawerWidth = 240;
 
-export const Sidebar = (open: boolean) => {
+export const Sidebar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const toggleDrawer =
-    () => (event: React.KeyboardEvent | React.MouseEvent, open) => {
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
         event.type === "keydown" &&
         ((event as React.KeyboardEvent).key === "Tab" ||
@@ -139,56 +140,11 @@ export const Sidebar = (open: boolean) => {
         </List>
       </Drawer>
 
-      <Drawer anchor={"left"} open={openDrawer} onClose={toggleDrawer(false)}>
-      <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <HomeOutlinedIcon sx={{ color: "purple" }} fontSize="large" />
-              </ListItemIcon>
-              <ListItemText primary={"Home"} sx={{ color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton onClick={toggleDrawer(true)}>
-              <ListItemIcon>
-                <SearchOutlinedIcon sx={{ color: "purple" }} fontSize="large" />
-              </ListItemIcon>
-              <ListItemText primary={"Search"} sx={{ color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <CenterFocusStrongOutlinedIcon
-                  sx={{ color: "purple" }}
-                  fontSize="large"
-                />
-              </ListItemIcon>
-              <ListItemText primary={"New post"} sx={{ color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <NotificationsActiveOutlinedIcon
-                  sx={{ color: "purple" }}
-                  fontSize="large"
-                />
-              </ListItemIcon>
-              <ListItemText primary={"Notifications"} sx={{ color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <AccountCircleIcon sx={{ color: "purple" }} fontSize="large" />
-              </ListItemIcon>
-              <ListItemText primary={"Profile"} sx={{ color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Drawer>
+      <SearchDrawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        anchor={"left"}
+      />
     </>
   );
 };
