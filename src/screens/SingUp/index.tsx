@@ -40,7 +40,7 @@ export const SingUp = () => {
         container
         alignItems="center"
         justifyContent="center"
-        sx={{ height: "100vh", width: "100vw", backgroundColor: "white", marginTop: 2 }}
+        sx={{ height: "100vh", width: "100vw", backgroundColor: "white", paddingTop: 2 }}
       >
         <Grid>
           <Grid

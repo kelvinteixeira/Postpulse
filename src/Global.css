@@ -9,6 +9,7 @@
 
 html {
   color: white !important;
+  background-color: black;
 }
 
 @font-face {

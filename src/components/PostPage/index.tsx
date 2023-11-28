@@ -38,8 +38,8 @@ const comments = [
 export const PostPage = () => {
   const [value, setValue] = useState<number | null>(1);
   return (
-    <Container>
-      <Typography sx={{ fontWeight: 700, marginTop: 2 }}>
+    <Container sx={{backgroundColor: "black"}}>
+      <Typography sx={{ fontWeight: 700, paddingTop: 2 }}>
         Título do vídeo
       </Typography>
       <Grid container spacing={2}>

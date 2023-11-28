@@ -7,9 +7,10 @@ import { Home } from "./screens/Home/Index";
 
 function App() {
   return (
-    <Grid container >
+    <Grid sx={{display: 'flex'}}>
       <Sidebar />
-      {/* <Home /> */}
+      <Home />
+      {/* <SingIn/> */}
       {/* <SingUp/> */}
     </Grid>
   );

@@ -3,7 +3,7 @@ import { Avatar, Box, Grid, Rating, Typography } from "@mui/material";
 export const Header = () => {
   return (
     <Box
-      sx={{ borderBottom: 1, borderColor: "purple", backgroundColor: "black" }}
+      sx={{ borderBottom: 1, borderColor: "purple", backgroundColor: "black",width: '100%' }}
     >
       <Grid container alignItems={"center"} spacing={2}>
         <Grid item sx={{ margin: 1 }}>
@@ -47,7 +47,9 @@ export const Header = () => {
         </Grid>
 
         <Grid item xs={2} sx={{ cursor: "pointer" }}>
-          <Typography sx={{ fontSize: 10, fontWeight: 700, color: "purple" }}>Posts</Typography>
+          <Typography sx={{ fontSize: 10, fontWeight: 700, color: "purple" }}>
+            Posts
+          </Typography>
           <Typography sx={{ fontWeight: 700 }}>281</Typography>
         </Grid>
 
