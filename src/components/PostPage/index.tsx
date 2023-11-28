@@ -39,7 +39,7 @@ export const PostPage = () => {
   const [value, setValue] = useState<number | null>(1);
   return (
     <Container sx={{backgroundColor: "black"}}>
-      <Typography sx={{ fontWeight: 700, paddingTop: 2 }}>
+      <Typography sx={{ fontWeight: 700, paddingTop: 3 }}>
         Título do vídeo
       </Typography>
       <Grid container spacing={2}>

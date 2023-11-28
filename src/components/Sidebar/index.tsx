@@ -17,9 +17,18 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { SearchDrawer } from "../SearchDrawer";
+import { CreatePost } from "../CreatePost";
 
 export const Sidebar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -39,7 +48,7 @@ export const Sidebar = () => {
       sx={{
         width: 240,
         height: "100vh",
-        borderRight: '1px solid purple',
+        borderRight: "1px solid purple",
         backgroundColor: "black",
       }}
     >
@@ -76,7 +85,7 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={handleClickOpen}>
             <ListItemIcon>
               <CenterFocusStrongOutlinedIcon
                 sx={{ color: "purple" }}
@@ -107,7 +116,7 @@ export const Sidebar = () => {
         </ListItem>
       </List>
 
-      <List sx={{bottom: 1, position: 'fixed'}}>
+      <List sx={{ bottom: 1, position: "fixed" }}>
         {["Settings", "Others"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -131,6 +140,14 @@ export const Sidebar = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         anchor={"left"}
+      />
+
+      <CreatePost
+        title="Create new post"
+        buttonTitle="Select from computer"
+        content="Drag photos and videos here"
+        open={openModal}
+        onClose={handleClose}
       />
     </Box>
   );

@@ -38,3 +38,8 @@ html {
   background-color: #d3d3d380;
   border-radius: 0.5rem;
 }
+
+.post-icon img {
+  width: 100px;
+  height: 100px;
+}
