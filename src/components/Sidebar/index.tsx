@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Badge,
   Box,
+  Divider,
   List,
   ListItem,
   ListItemButton,
@@ -20,10 +21,13 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { NotificationsDrawer } from "../NotificationsDrawer";
 
 export const Sidebar = () => {
-  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openSearchDrawer, setOpenSearchDrawer] = useState(false);
+  const [openNotificationsDrawer, setOpenNotificationsDrawer] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
   const handleClickOpen = () => {
     setOpenModal(true);
   };
@@ -31,19 +35,6 @@ export const Sidebar = () => {
   const handleClose = () => {
     setOpenModal(false);
   };
-
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
-      setOpenDrawer(open);
-    };
 
   return (
     <Box
@@ -80,7 +71,7 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={toggleDrawer(true)}>
+          <ListItemButton onClick={() => setOpenSearchDrawer(true)}>
             <ListItemIcon>
               <SearchOutlinedIcon color="primary" fontSize="large" />
             </ListItemIcon>
@@ -96,7 +87,7 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={() => setOpenNotificationsDrawer(true)}>
             <ListItemIcon>
               <Badge badgeContent={100} color="secondary">
                 <NotificationsActiveOutlinedIcon
@@ -116,28 +107,30 @@ export const Sidebar = () => {
             <ListItemText primary={"Profile"} sx={{ color: "white" }} />
           </ListItemButton>
         </ListItem>
-      </List>
 
-      <List sx={{ bottom: 1, position: "fixed" }}>
-        {["Settings", "Others"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? (
-                  <SettingsOutlinedIcon color="primary" fontSize="large" />
-                ) : (
-                  <MenuOutlinedIcon color="primary" fontSize="large" />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <Divider sx={{ backgroundColor: "#673ab7", margin: '5px 0 5px 0' }} />
+
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <SettingsOutlinedIcon color="primary" fontSize="large" />
+            </ListItemIcon>
+            <ListItemText primary={"Settings"} sx={{ color: "white" }} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MenuOutlinedIcon color="primary" fontSize="large" />
+            </ListItemIcon>
+            <ListItemText primary={"More"} sx={{ color: "white" }} />
+          </ListItemButton>
+        </ListItem>
       </List>
 
       <SearchDrawer
-        open={openDrawer}
-        onClose={() => setOpenDrawer(false)}
+        open={openSearchDrawer}
+        onClose={() => setOpenSearchDrawer(false)}
         anchor={"left"}
       />
 
@@ -147,6 +140,12 @@ export const Sidebar = () => {
         content="Drag photos and videos here"
         open={openModal}
         onClose={handleClose}
+      />
+
+      <NotificationsDrawer
+        open={openNotificationsDrawer}
+        onClose={() => setOpenNotificationsDrawer(false)}
+        anchor={"left"}
       />
     </Box>
   );
