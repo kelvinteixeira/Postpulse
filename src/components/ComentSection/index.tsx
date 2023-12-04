@@ -26,8 +26,8 @@ export const CommentSection = ({ comments }: CommentSectionProps) => {
 
   return (
     <Grid
-      className="hide-scrollbar"
-      height={"70vh"}
+      className="deep-purple-scrollbar"
+      height={500}
       sx={{
         border: 2,
         borderColor: "white",
@@ -51,7 +51,6 @@ export const CommentSection = ({ comments }: CommentSectionProps) => {
             <Typography
               fontWeight={"300 !important"}
               fontSize={12}
-              className="comment-content"
             >
               {comment.content}
             </Typography>

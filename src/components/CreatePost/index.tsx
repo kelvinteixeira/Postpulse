@@ -37,10 +37,12 @@ export const CreatePost = (props: CreatePostProps) => {
       onClose={props.onClose}
       sx={{}}
     >
-      <DialogTitle sx={{ background: "#b5b2b2" }} align="center">
+      <Box className="glass-effect">
+
+      <DialogTitle  sx={{ background: "#b5b2b2" }} align="center">
         {"Create new post"}
       </DialogTitle>
-      <Divider  sx={{ backgroundColor: "#673AB7" }} />
+      <Divider sx={{ backgroundColor: "#673AB7" }} />
       <Box
         sx={{
           width: 500,
@@ -48,7 +50,7 @@ export const CreatePost = (props: CreatePostProps) => {
           display: "flex",
           backgroundColor: "#b5b2b2",
         }}
-      >
+        >
         <DialogContent
           sx={{
             display: "flex",
@@ -56,7 +58,7 @@ export const CreatePost = (props: CreatePostProps) => {
             justifyContent: "center",
             alignItems: "center",
           }}
-        >
+          >
           <Box className="post-icon">
             <img
               src="/public/images/camera-icon.png"
@@ -70,11 +72,12 @@ export const CreatePost = (props: CreatePostProps) => {
             variant="contained"
             sx={{ textTransform: "none", borderRadius: 2, marginTop: 2 }}
             color="primary"
-          >
+            >
             {props.buttonTitle}
           </Button>
         </DialogContent>
       </Box>
+            </Box>
     </Dialog>
   );
 };

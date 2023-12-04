@@ -13,6 +13,9 @@ import {
 
 import { SearchDrawer } from "../SearchDrawer";
 import { CreatePost } from "../CreatePost";
+import { NotificationsDrawer } from "../NotificationsDrawer";
+
+import { useNavigate } from "react-router-dom";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CenterFocusStrongOutlinedIcon from "@mui/icons-material/CenterFocusStrongOutlined";
@@ -21,12 +24,12 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { NotificationsDrawer } from "../NotificationsDrawer";
 
 export const Sidebar = () => {
   const [openSearchDrawer, setOpenSearchDrawer] = useState(false);
   const [openNotificationsDrawer, setOpenNotificationsDrawer] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpenModal(true);
@@ -39,8 +42,6 @@ export const Sidebar = () => {
   return (
     <Box
       sx={{
-        width: 240,
-        height: "100vh",
         borderRight: "2px solid #673AB7",
         backgroundColor: "black",
         padding: "0 5px 0 5px",
@@ -63,7 +64,11 @@ export const Sidebar = () => {
 
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              navigate("/home");
+            }}
+          >
             <ListItemIcon>
               <HomeOutlinedIcon color="primary" fontSize="large" />
             </ListItemIcon>
@@ -100,7 +105,11 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              navigate("/profile");
+            }}
+          >
             <ListItemIcon>
               <AccountCircleIcon color="primary" fontSize="large" />
             </ListItemIcon>
@@ -108,7 +117,7 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
 
-        <Divider sx={{ backgroundColor: "#673ab7", margin: '5px 0 5px 0' }} />
+        <Divider sx={{ backgroundColor: "#673ab7", margin: "5px 0 5px 0" }} />
 
         <ListItem disablePadding>
           <ListItemButton>

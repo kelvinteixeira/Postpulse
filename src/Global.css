@@ -18,7 +18,7 @@ html {
 }
 
 .video-container {
-  height: 65vh;
+  /* height: 65vh; */
   border: 2px solid white;
   border-radius: 1rem;
   overflow: hidden;
@@ -40,7 +40,26 @@ html {
 }
 
 .post-icon img {
-  width: 100px;
-  height: 100px;
+  width: 6rem;
+  height: 6rem;
 }
 
+.deep-purple-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: gray;
+}
+
+.deep-purple-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #673ab7;
+  border-radius: 1rem;
+}
+
+.deep-purple-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #4a267a;
+}
+
+.glass-effect {
+  background-color: rgba(255, 255, 255, 0.3); /* Adjust the alpha value for transparency */
+  backdrop-filter: blur(10px); /* Adds a blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow to enhance the glass effect */
+}

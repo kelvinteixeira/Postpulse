@@ -1,4 +1,4 @@
-import { useState, ReactNode } from "react";
+// import { useState, ReactNode } from "react";
 import {
   Avatar,
   Container,
@@ -8,22 +8,20 @@ import {
   Typography,
 } from "@mui/material";
 
-import SearchIcon from "@mui/icons-material/Search";
-
 type NotificationsDrawerProps = {
   open: boolean;
   onClose: () => void;
   anchor: "left";
 };
 
-type Notifications = {
-  image: ReactNode;
-  nickname: string;
-  content: string;
-};
+// type Notifications = {
+//   image: ReactNode;
+//   nickname: string;
+//   content: string;
+// };
 
 export const NotificationsDrawer = (props: NotificationsDrawerProps) => {
-  const data = useState<Array<Notifications>>([]);
+  // const data = useState<Array<Notifications>>([]);
 
   return (
     <Drawer
@@ -32,7 +30,7 @@ export const NotificationsDrawer = (props: NotificationsDrawerProps) => {
       onClose={props.onClose}
       sx={{ [`& .MuiDrawer-paper`]: { backgroundColor: "black", width: 400 } }}
     >
-      <Container>
+      <Container className="deep-purple-scrollbar" sx={{overflowY: 'auto'}}>
         <Typography marginTop={4} marginBottom={1} color="white">
           Notifications
         </Typography>

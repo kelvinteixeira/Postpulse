@@ -4,7 +4,7 @@ import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import { CommentSection } from "../ComentSection";
 
-const comments = [
+export const comments = [
   { id: 1, author: "João", content: "Ótimo post!" },
   { id: 2, author: "Maria", content: "Adorei ler isso!" },
   { id: 3, author: "Maria", content: "Adorei ler isso!" },
