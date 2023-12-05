@@ -8,14 +8,30 @@ import {
   Input,
   InputAdornment,
   InputLabel,
+  Link,
   Typography,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GoogleIcon from "@mui/icons-material/Google";
+import { useNavigate } from "react-router-dom";
 
-export const SingIn = () => {
+interface FormValues {
+  username: string;
+  password: string;
+}
+
+interface SignInProps {
+  onLoginSuccess: (isLoggedIn: boolean) => void;
+}
+
+export const SingIn = ({ onLoginSuccess }: SignInProps) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [formValues, setFormValues] = useState<FormValues>({
+    username: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -24,6 +40,28 @@ export const SingIn = () => {
   ) => {
     event.preventDefault();
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const { username, password } = formValues;
+    if (username === "user" && password === "123456") {
+      localStorage.setItem("usuarioLogado", "true");
+      navigate("/home");
+      onLoginSuccess(true);
+    } else {
+      window.alert("Credenciais inválidas!");
+      return false;
+    }
+  }
+
   return (
     <Grid
       container
@@ -58,8 +96,13 @@ export const SingIn = () => {
             variant="standard"
             sx={{ width: "100%", marginBottom: 2 }}
           >
-            <InputLabel htmlFor="email">Email</InputLabel>
-            <Input id="email" />
+            <InputLabel htmlFor="username">Username</InputLabel>
+            <Input
+              name="username"
+              value={formValues.username}
+              onChange={handleInputChange}
+              id="username"
+            />
           </FormControl>
 
           <FormControl
@@ -69,6 +112,9 @@ export const SingIn = () => {
           >
             <InputLabel htmlFor="password">Password</InputLabel>
             <Input
+              name="password"
+              value={formValues.password}
+              onChange={handleInputChange}
               id="password"
               color="primary"
               type={showPassword ? "text" : "password"}
@@ -98,17 +144,18 @@ export const SingIn = () => {
                 cursor: "pointer",
               }}
             >
-              Esqueceu a senha?
+              Forget password?
             </Typography>
           </FormControl>
 
           <Button
+            onClick={handleSubmit}
             variant="contained"
             fullWidth
             sx={{ textTransform: "none", borderRadius: 2, marginBottom: 2 }}
             color="primary"
           >
-            Entrar
+            Log in
           </Button>
           <Grid
             container
@@ -119,7 +166,7 @@ export const SingIn = () => {
             <Grid item xs={5}>
               <Divider />
             </Grid>
-            <Typography sx={{ color: "#673AB7" }}>Ou</Typography>
+            <Typography sx={{ color: "#673AB7" }}>OR</Typography>
             <Grid item xs={5}>
               <Divider />
             </Grid>
@@ -127,7 +174,7 @@ export const SingIn = () => {
           <Grid container alignItems={"center"} justifyContent={"center"}>
             <GoogleIcon sx={{ color: "#673AB7", marginRight: 2 }} />
             <Typography sx={{ color: "#673AB7" }}>
-              Entre com o google
+              Log in with google
             </Typography>
           </Grid>
         </Grid>
@@ -143,9 +190,9 @@ export const SingIn = () => {
           }}
         >
           <Typography sx={{ color: "black" }}>
-            Não possui conta? &nbsp;
+            Don't have an account? &nbsp;
           </Typography>
-          <Typography sx={{ color: "#673AB7" }}>Cadastre-se</Typography>
+          <Link href="/singup" variant="body1" sx={{ color: "#673AB7", cursor: 'pointer' }}>Sing up</Link>
         </Grid>
       </Grid>
     </Grid>

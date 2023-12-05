@@ -51,7 +51,7 @@ export const Sidebar = () => {
         color="primary"
         sx={{
           marginLeft: 2,
-          padding: 3,
+          padding: 1,
           marginBottom: 4,
           fontFamily: "Hopsters",
           fontSize: 40,

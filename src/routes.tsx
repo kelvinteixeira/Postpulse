@@ -5,19 +5,34 @@ import { Home } from "./screens/Home/Index";
 import { Profile } from "./components/Profile";
 import { Grid } from "@mui/material";
 import { Sidebar } from "./components/Sidebar";
+import { useState } from "react";
 
 const AppRoutes = () => {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const handleLoginSuccess = (isLoggedIn: boolean) => {
+    setIsUserLoggedIn(isLoggedIn);
+  };
+
   return (
     <BrowserRouter>
-      <Grid sx={{ display: "flex" }}>
-        <Sidebar />
+      {isUserLoggedIn ? (
+        <Grid sx={{ display: "flex" }}>
+          <Sidebar />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </Grid>
+      ) : (
         <Routes>
-          <Route path="/" element={<SingIn />} />
+          <Route
+            path="/"
+            element={<SingIn onLoginSuccess={handleLoginSuccess} />}
+          />
           <Route path="/singup" element={<SingUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
         </Routes>
-      </Grid>
+      )}
     </BrowserRouter>
   );
 };

@@ -8,6 +8,7 @@ import {
   Input,
   InputAdornment,
   InputLabel,
+  Link,
   Typography,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
@@ -59,7 +60,7 @@ export const SingUp = () => {
             Postpulse
           </Typography>
           <Typography color="gray" align="center" fontWeight={700}>
-            Cadastra-se para começar a postar conteúdos incríveis.
+          Sign up to start posting amazing content.
           </Typography>
 
           <FormControl
@@ -74,7 +75,7 @@ export const SingUp = () => {
             variant="standard"
             sx={{ width: "100%", marginBottom: 2 }}
           >
-            <InputLabel htmlFor="fullname">Nome completo</InputLabel>
+            <InputLabel htmlFor="fullname">Full name</InputLabel>
             <Input id="fullname" />
           </FormControl>
 
@@ -122,8 +123,7 @@ export const SingUp = () => {
             color={"gray"}
             marginBottom={2}
           >
-            Ao se cadastrar você está ciente e aceita nossos termos de
-            compromissos, termos de privacidade, Cookies e nossas diretizes.
+            By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .
           </Typography>
           <Button
             variant="contained"
@@ -131,7 +131,7 @@ export const SingUp = () => {
             sx={{ textTransform: "none", borderRadius: 2, marginBottom: 2 }}
             color="primary"
           >
-            Cadastrar
+            Sing up
           </Button>
           <Grid
             container
@@ -142,7 +142,7 @@ export const SingUp = () => {
             <Grid item xs={5}>
               <Divider />
             </Grid>
-            <Typography sx={{ color: "#673AB7" }}>Ou</Typography>
+            <Typography sx={{ color: "#673AB7" }}>OR</Typography>
             <Grid item xs={5}>
               <Divider />
             </Grid>
@@ -150,7 +150,7 @@ export const SingUp = () => {
           <Grid container alignItems={"center"} justifyContent={"center"}>
             <GoogleIcon sx={{ color: "#673AB7", marginRight: 2 }} />
             <Typography sx={{ color: "#673AB7" }}>
-              Cadastrar com o google
+              Sing up with google
             </Typography>
           </Grid>
         </Grid>
@@ -167,9 +167,9 @@ export const SingUp = () => {
           }}
         >
           <Typography sx={{ color: "black" }}>
-            Já é cadastrado? &nbsp;
+            Have an account? &nbsp;
           </Typography>
-          <Typography sx={{ color: "#673AB7" }}>Entrar</Typography>
+          <Link href="/" variant="body1" sx={{ color: "#673AB7", cursor: 'pointer' }}>Sing in</Link>
         </Grid>
       </Grid>
     </Grid>
