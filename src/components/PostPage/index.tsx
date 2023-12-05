@@ -1,49 +1,30 @@
-import { Container, Grid, Rating, Typography } from "@mui/material";
-import video from "../../assets/videos/backgroundSingIn.mp4";
 import { useState } from "react";
-import StarIcon from "@mui/icons-material/Star";
+import { Box, Button, Grid, Rating, Typography } from "@mui/material";
+
 import { CommentSection } from "../ComentSection";
 
-export const comments = [
-  { id: 1, author: "João", content: "Ótimo post!" },
-  { id: 2, author: "Maria", content: "Adorei ler isso!" },
-  { id: 3, author: "Maria", content: "Adorei ler isso!" },
-  { id: 4, author: "Maria", content: "Adorei ler isso!" },
-  {
-    id: 5,
-    author: "Carlos",
-    content:
-      "Muito informativo. asd comentario grande o suficiente para preencher todos os caracteres",
-  },
-  {
-    id: 6,
-    author: "Carlos",
-    content:
-      "Muito informativo. asd comentario grande o suficiente para preencher todos os caracteres",
-  },
-  {
-    id: 7,
-    author: "Carlos",
-    content:
-      "Muito informativo. asd comentario grande o suficiente para preencher todos os caracteres",
-  },
-  {
-    id: 8,
-    author: "Carlos",
-    content:
-      "Muito informativo. asd comentario grande o suficiente para preencher todos os caracteres",
-  },
-];
+import video from "../../assets/videos/backgroundSingIn.mp4";
+
+import StarIcon from "@mui/icons-material/Star";
+import { comments } from "../../services/mock";
 
 export const PostPage = () => {
   const [value, setValue] = useState<number | null>(1);
+  const [favoritedPost, setFavoritedPost] = useState(false);
+
+  function handleFavoritePost() {
+    setFavoritedPost(!favoritedPost);
+  }
   return (
-    <Container sx={{backgroundColor: "black"}}>
-      <Typography sx={{ fontWeight: 700, paddingTop: 2 }}>
-        Título do vídeo
-      </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={8} marginTop={1}>
+    <Box sx={{ backgroundColor: "black" }}>
+      <Grid
+        container
+        spacing={1}
+        justifyContent={"center"}
+        alignItems={"center"}
+        marginTop={1}
+      >
+        <Grid item xs={7}>
           <Typography
             sx={{
               fontSize: 10,
@@ -73,6 +54,23 @@ export const PostPage = () => {
               <source src={video} type="video/mp4" />
             </video>
           </Grid>
+          <Grid container justifyContent={"flex-end"}>
+            <Button
+              onClick={handleFavoritePost}
+              variant="contained"
+              sx={{ textTransform: "none", borderRadius: 2, marginTop: 1 }}
+              color="primary"
+              endIcon={
+                favoritedPost ? (
+                  <StarIcon />
+                ) : (
+                  <StarIcon sx={{ color: "yellow" }} />
+                )
+              }
+            >
+              {favoritedPost ? "Favorite" : "Favorited"}
+            </Button>
+          </Grid>
         </Grid>
 
         <Grid item xs={4}>
@@ -82,6 +80,6 @@ export const PostPage = () => {
           <CommentSection comments={comments} />
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };

@@ -152,6 +152,7 @@ export const SingIn = ({ onLoginSuccess }: SignInProps) => {
             onClick={handleSubmit}
             variant="contained"
             fullWidth
+            type="submit"
             sx={{ textTransform: "none", borderRadius: 2, marginBottom: 2 }}
             color="primary"
           >

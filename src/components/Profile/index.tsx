@@ -12,12 +12,13 @@ import {
 } from "@mui/material";
 import video from "../../assets/videos/backgroundSingIn.mp4";
 
+import { CommentSection } from "../ComentSection";
+import { comments } from "../../services/mock";
+
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import StarIcon from "@mui/icons-material/Star";
-import { CommentSection } from "../ComentSection";
-import { comments } from "../PostPage";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export const Profile = () => {
   const [value, setValue] = useState(0);

@@ -4,7 +4,7 @@ import { PostPage } from "../../components/PostPage";
 
 export const Home = () => {
   return (
-    <Grid height={'100vh'}>
+    <Grid>
       <Header />
       <PostPage />
     </Grid>

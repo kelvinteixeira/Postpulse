@@ -16,23 +16,24 @@ const AppRoutes = () => {
 
   return (
     <BrowserRouter>
-      {isUserLoggedIn ? (
-        <Grid sx={{ display: "flex" }}>
-          <Sidebar />
+      <Grid container>
+        {!isUserLoggedIn && (
+          <Grid item xs={2}>
+            <Sidebar />
+          </Grid>
+        )}
+        <Grid item xs={10}>
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/"
+              element={<SingIn onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route path="/singup" element={<SingUp />} />
           </Routes>
         </Grid>
-      ) : (
-        <Routes>
-          <Route
-            path="/"
-            element={<SingIn onLoginSuccess={handleLoginSuccess} />}
-          />
-          <Route path="/singup" element={<SingUp />} />
-        </Routes>
-      )}
+      </Grid>
     </BrowserRouter>
   );
 };
