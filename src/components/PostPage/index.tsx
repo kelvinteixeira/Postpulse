@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { Box, Button, Grid, Rating, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Rating,
+  Typography,
+} from "@mui/material";
 
 import { CommentSection } from "../ComentSection";
+import { comments } from "../../services/mock";
 
 import video from "../../assets/videos/backgroundSingIn.mp4";
 
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import StarIcon from "@mui/icons-material/Star";
-import { comments } from "../../services/mock";
 
 export const PostPage = () => {
   const [value, setValue] = useState<number | null>(1);
@@ -55,29 +62,18 @@ export const PostPage = () => {
             </video>
           </Grid>
           <Grid container justifyContent={"flex-end"}>
-            <Button
-              onClick={handleFavoritePost}
-              variant="contained"
-              sx={{ textTransform: "none", borderRadius: 2, marginTop: 1 }}
-              color="primary"
-              endIcon={
-                favoritedPost ? (
-                  <StarIcon />
-                ) : (
-                  <StarIcon sx={{ color: "yellow" }} />
-                )
-              }
-            >
-              {favoritedPost ? "Favorite" : "Favorited"}
-            </Button>
+            <IconButton onClick={handleFavoritePost} color="primary">
+              {favoritedPost ? (
+                <BookmarksIcon sx={{ color: "#673AB7" }} />
+              ) : (
+                <BookmarksIcon sx={{ color: "#fff" }} />
+              )}
+            </IconButton>
           </Grid>
         </Grid>
 
-        <Grid item xs={4}>
-          <Typography marginBottom={1} align="center">
-            Comentários
-          </Typography>
-          <CommentSection comments={comments} />
+        <Grid item xs={4} marginTop={2}>
+          <CommentSection comments={comments} heightValue={500} />
         </Grid>
       </Grid>
     </Box>

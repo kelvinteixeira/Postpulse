@@ -11,9 +11,10 @@ interface Comment {
 
 interface CommentSectionProps {
   comments: Comment[];
+  heightValue: number;
 }
 
-export const CommentSection = ({ comments }: CommentSectionProps) => {
+export const CommentSection = ({ comments, heightValue }: CommentSectionProps) => {
   const [likedComments, setLikedComments] = useState<number[]>([]);
 
   function handleLikedComment(commentId: number) {
@@ -26,8 +27,8 @@ export const CommentSection = ({ comments }: CommentSectionProps) => {
 
   return (
     <Grid
+      height={heightValue}
       className="deep-purple-scrollbar"
-      height={500}
       sx={{
         border: 2,
         borderColor: "white",
@@ -48,10 +49,7 @@ export const CommentSection = ({ comments }: CommentSectionProps) => {
             <Typography color={"#673AB7"} className="comment-author">
               {comment.author}: &nbsp;
             </Typography>
-            <Typography
-              fontWeight={"300 !important"}
-              fontSize={12}
-            >
+            <Typography fontWeight={"300 !important"} fontSize={12}>
               {comment.content}
             </Typography>
           </Grid>

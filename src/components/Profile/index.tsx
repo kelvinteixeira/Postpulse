@@ -10,23 +10,33 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import video from "../../assets/videos/backgroundSingIn.mp4";
-
-import { CommentSection } from "../ComentSection";
-import { comments } from "../../services/mock";
 
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Post } from "./Posts";
+import { Favorites } from "./Favorites";
+
+type ClickedOption = "postOption" | "favoriteOption" | "nearbyOption";
 
 export const Profile = () => {
   const [value, setValue] = useState(0);
-  const [favoritedPost, setFavoritedPost] = useState(false);
+  const [clickedOption, setClickedOption] = useState("");
 
-  function handleFavoritePost() {
-    setFavoritedPost(!favoritedPost);
+  let componenteRenderizado;
+
+  switch (clickedOption) {
+    case "favoriteOption":
+      componenteRenderizado = <Favorites />;
+      break;
+    default:
+      componenteRenderizado = <Post />;
   }
+
+  const handleOptionChange = (newOption: ClickedOption) => {
+    setClickedOption(newOption);
+  };
 
   return (
     <Grid width={"100%"}>
@@ -99,69 +109,24 @@ export const Profile = () => {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Posts" icon={<VideoLibraryIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction
+            onClick={() => handleOptionChange("postOption")}
+            label="Posts"
+            icon={<VideoLibraryIcon />}
+          />
+          <BottomNavigationAction
+            onClick={() => handleOptionChange("favoriteOption")}
+            label="Favorites"
+            icon={<BookmarksIcon />}
+          />
+          <BottomNavigationAction
+            onClick={() => handleOptionChange("nearbyOption")}
+            label="Nearby"
+            icon={<LocationOnIcon />}
+          />
         </BottomNavigation>
       </Box>
-      <Container>
-        <Grid container spacing={2}>
-          <Grid item xs={8} marginTop={1}>
-            <Typography
-              sx={{
-                fontSize: 10,
-                fontWeight: 700,
-                color: "#673AB7",
-              }}
-            >
-              Avaliação do post
-            </Typography>
-            <Rating
-              readOnly
-              sx={{
-                marginBottom: 1,
-              }}
-              size="medium"
-              emptyIcon={
-                <StarIcon style={{ color: "lightgray" }} fontSize="inherit" />
-              }
-              name="rating-post"
-              value={2}
-            />
-
-            <Grid className="video-container">
-              <video controls loop>
-                <source src={video} type="video/mp4" />
-              </video>
-            </Grid>
-
-            <Grid container justifyContent={"flex-end"}>
-              <Button
-                onClick={handleFavoritePost}
-                variant="contained"
-                sx={{ textTransform: "none", borderRadius: 2, marginTop: 1 }}
-                color="primary"
-                endIcon={
-                  favoritedPost ? (
-                    <StarIcon />
-                  ) : (
-                    <StarIcon sx={{ color: "yellow" }} />
-                  )
-                }
-              >
-                {favoritedPost ? "Favorite" : "Favorited"}
-              </Button>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={4}>
-            <Typography marginBottom={1} marginTop={1} align="center">
-              Comentários
-            </Typography>
-            <CommentSection comments={comments} />
-          </Grid>
-        </Grid>
-      </Container>
+      <Container>{componenteRenderizado}</Container>
     </Grid>
   );
 };

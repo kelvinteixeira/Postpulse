@@ -23,7 +23,6 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
-import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -41,7 +40,7 @@ export const Sidebar = () => {
   return (
     <Box
       sx={{
-        width: 240,
+        width: 210,
         height: "100vh",
         borderRight: "2px solid #673AB7",
         backgroundColor: "black",
@@ -119,17 +118,10 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <BookmarksIcon color="primary" fontSize="large" />
-            </ListItemIcon>
-            <ListItemText primary={"Favorites"} sx={{ color: "white" }} />
-          </ListItemButton>
-        </ListItem>
+      
         <Divider sx={{ backgroundColor: "#673ab7", margin: "5px 0 5px 0" }} />
 
-        <ListItem disablePadding>
+        <ListItem disablePadding sx={{marginTop: 5}}>
           <ListItemButton>
             <ListItemIcon>
               <ContactSupportIcon color="primary" fontSize="large" />
